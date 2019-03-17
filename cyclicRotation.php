@@ -1,17 +1,17 @@
 <?php
 var_dump(solution([3, 8, 9, 7, 6], 3));
-function solution($A, $K){
-	$timesToRotate = $K%count($A);
-	$array=array();
-	//$array = new SplFixedArray(count($A));
-	foreach($A as $k=>$v){
-		if($k+$timesToRotate<count($A)){
-			$array[$k+$timesToRotate]=$v;
-		}
-		else {
-			$array[($k+$timesToRotate)-count($A)]=$v;
-		}
-	}
-	ksort($array);
-	return $array;
+function solution($A, $K) {
+    // write your code in PHP7.0
+    $resultArray = [];
+    $arrayLenth = count($A);
+    foreach ($A as $i => $v) {
+        if (($i+$K) < $arrayLenth) { 
+        	$index = $i+$K;
+        } else {
+            $index = ($i+$K)%$arrayLenth;
+        }
+        $resultArray[$index] = $v;
+    }
+    
+    return $resultArray;
 }
